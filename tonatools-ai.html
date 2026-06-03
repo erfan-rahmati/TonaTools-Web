@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+    <title>TonaTools | منشی هوشمند صنعتی</title>
+    <meta name="description"
+        content="منشی هوشمند تونا تولز - پاسخگوی سوالات تخصصی در حوزه تجهیزات صنعتی، ابزارآلات برقی و دستی، بست کمربندی، نوار چسب صنعتی، وایر شو و کابلشو">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link rel="stylesheet" href="assets/css/tonatools-ai.css">
+</head>
+
+<body class="light">
+
+    <header class="ai-header">
+        <div class="ai-header-logo">
+            <div class="ai-logo-icon"><i class="fas fa-robot"></i></div>
+            <div class="ai-logo-text">
+                <h1>تونا‌بات | منشی هوشمند تونا تولز</h1>
+                <div class="connection-status"><span class="status-dot"></span><span id="apiStatus">آنلاین | مشاور
+                        صنعتی</span></div>
+            </div>
+        </div>
+        <div class="ai-header-actions">
+            <button id="themeToggleAI" class="ai-header-btn"><i id="themeIconAI" class="fas fa-moon"></i></button>
+            <button id="clearChatBtn" class="ai-header-btn"><i class="fas fa-trash-alt"></i></button>
+            <a href="index.html" class="ai-header-btn"><i class="fas fa-home"></i></a>
+        </div>
+    </header>
+
+    <div class="ai-chat-container" id="chatContainer"></div>
+
+    <div id="typingIndicator" style="display: none;">
+        <div class="typing-indicator">
+            <div class="message-avatar"><i class="fas fa-robot"></i></div>
+            <div class="typing-dots"><span></span><span></span><span></span></div>
+        </div>
+    </div>
+
+    <button id="scrollBottomBtn" class="scroll-bottom-btn"><i class="fas fa-chevron-down"></i></button>
+
+    <footer class="ai-input-footer">
+        <div class="input-wrapper">
+            <div class="input-container">
+                <textarea id="messageInput" class="ai-input" rows="1"
+                    placeholder="سوال خود را بپرسید..."></textarea>
+                <button id="sendBtn" class="send-btn">
+                    <svg fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                            d="M12 19l9 2-9-18-9 18 9-2zm0 0v-8"></path>
+                    </svg>
+                </button>
+            </div>
+            <div class="suggestions-dropdown">
+                <button class="suggestions-toggle-btn" id="suggestionsToggleBtn">
+                    <i class="fas fa-lightbulb"></i>
+                    <span>سوالات پرتکرار</span>
+                    <i class="fas fa-chevron-down"></i>
+                </button>
+                <div class="suggestions-panel" id="suggestionsPanel">
+                    <div class="suggestion-item" data-question="بهترین بست کمربندی برای صنعت ساختمان چیست؟"><i
+                            class="fas fa-link"></i> بهترین بست کمربندی</div>
+                    <div class="suggestion-item" data-question="قیمت پرس هیدرولیک 16 تن چقدر است؟"><i
+                            class="fas fa-tools"></i> قیمت پرس هیدرولیک</div>
+                    <div class="suggestion-item" data-question="نوار چسب عایق برق چه ویژگی‌هایی دارد؟"><i
+                            class="fas fa-tape"></i> نوار چسب عایق برق</div>
+                    <div class="suggestion-item" data-question="انواع وایر شو کدامند و چه کاربردی دارند؟"><i
+                            class="fas fa-plug"></i> انواع وایر شو</div>
+                    <div class="suggestion-item" data-question="قیمت بست کمربندی استیل 304 سایز 250*2.5"><i
+                            class="fas fa-search"></i> استعلام قیمت بست استیل</div>
+                    <div class="suggestion-item" data-question="تفاوت بست کمربندی فولادی و استیل چیست؟"><i
+                            class="fas fa-balance-scale"></i> فرق فولاد و استیل</div>
+                    <div class="suggestion-item" data-question="بهترین ابزار برای کابل‌کشی صنعتی چیست؟"><i
+                            class="fas fa-cable-car"></i> ابزار کابل‌کشی</div>
+                    <div class="suggestion-item" data-question="قیمت وایر شو مسی مدل E 0508"><i class="fas fa-coin"></i>
+                        قیمت وایر شو E 0508</div>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- مودال جزییات محصول -->
+    <div class="product-modal-overlay" id="productModalOverlay">
+        <div class="product-modal-container">
+            <div class="product-modal">
+                <button class="modal-close-btn" id="modalCloseBtn"><i class="fas fa-times"></i></button>
+                <div class="modal-content-wrapper">
+                    <div class="modal-image-section">
+                        <div class="modal-gallery">
+                            <div class="modal-main-image">
+                                <button class="gallery-nav prev" id="galleryPrev"><i
+                                        class="fas fa-chevron-right"></i></button>
+                                <img id="modalProductImage" src="" alt="محصول">
+                                <button class="gallery-nav next" id="galleryNext"><i
+                                        class="fas fa-chevron-left"></i></button>
+                            </div>
+                            <div class="modal-thumbnails" id="modalThumbnails"></div>
+                        </div>
+                    </div>
+                    <div class="modal-info-section">
+                        <h2 class="modal-product-title" id="modalProductTitle"></h2>
+                        <div class="modal-product-price" id="modalProductPrice"></div>
+                        <div class="modal-specs">
+                            <h4>مشخصات فنی</h4>
+                            <div class="specs-grid" id="modalSpecs"></div>
+                        </div>
+                        <a href="index.html" class="modal-view-product" id="modalViewProduct">
+                            <i class="fas fa-eye"></i>
+                            <span>مشاهده محصول در سایت</span>
+                            <i class="fas fa-arrow-left"></i>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="assets/js/tonatools-ai.js"></script>
+    <script src="assets/js/click-animation.js"></script>
+</body>
+
+</html>

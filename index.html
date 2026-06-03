@@ -1,0 +1,748 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=yes">
+    <title>Tona Wire Accessory</title>
+    <!-- Font Awesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <!-- Swiper JS CSS -->
+    <link rel="stylesheet" href="assets/css/swiper-bundle.min.css" />
+    <link rel="stylesheet" href="assets/css/style.css">
+
+</head>
+
+<body>
+
+    <!-- ==================== Header ==================== -->
+    <header class="site-header">
+        <div class="header-top">
+            <div class="container">
+                <div class="header-top-inner">
+                    <div class="contact-info">
+                        <i class="fas fa-phone-alt"></i>
+                        <span>021-38024</span>
+                        <span class="sep">|</span>
+                        <i class="fas fa-clock"></i>
+                        <span>شنبه تا چهارشنبه ۹-۱۷</span>
+                    </div>
+
+                    <!-- بخش  ورود/ثبت نام -->
+                    <!-- <div class="user-actions">
+                        <a href="#"><i class="fas fa-user"></i> ورود / ثبت‌نام</a>
+                    </div> -->
+                </div>
+            </div>
+        </div>
+
+        <div class="header-main">
+            <div class="container">
+                <div class="header-main-inner">
+                    <a href="#" class="logo">
+                        <img src="assets/image/logo.jpg" alt="TonaTools">
+                    </a>
+
+                    <button class="mobile-menu-toggle" id="mobileMenuToggle">
+                        <i class="fas fa-bars"></i>
+                    </button>
+
+                    <nav class="desktop-nav">
+                        <ul class="nav-list">
+                            <li class="nav-item-has-dropdown" id="categoryDropdownLi">
+                                <a href="#" class="nav-link dropdown-toggle" id="categoryDropdownBtn">
+                                    <i class="fas fa-th-large"></i> دسته‌بندی محصولات
+                                    <i class="fas fa-chevron-down"></i>
+                                </a>
+                                <div class="dropdown-mega-menu" id="categoryDropdownMenu">
+                                    <div class="mega-menu-grid" id="megaMenuGrid">
+                                        <!-- دسته‌بندی‌ها توسط جاوااسکریپت از API لود می‌شوند -->
+                                        <div class="loading-categories"
+                                            style="text-align:center; padding:30px; grid-column:1/-1;">
+                                            <i class="fas fa-spinner fa-pulse"
+                                                style="font-size:30px; color:#f9ae13;"></i>
+                                            <p>در حال بارگذاری...</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </li>
+                            <li><a href="index.html" class="nav-link">خانه</a></li>
+                            <li><a href="about.html" class="nav-link">درباره ما</a></li>
+                            <li><a href="contact.html" class="nav-link">تماس با ما</a></li>
+                            <li><a href="blog.html" class="nav-link">وبلاگ</a></li>
+                        </ul>
+                    </nav>
+
+                    <div class="header-icons">
+                        <div class="search-trigger-modern" id="searchTrigger">
+                            <i class="fas fa-search"></i>
+                            <span class="search-text">جستجو</span>
+                        </div>
+
+                        <!-- دکمه منشی هوشمند -->
+                        <a href="tonatools-ai.html" class="ai-assistant-btn">
+                            <i class="fas fa-robot"></i>
+                            <span class="ai-text">منشی هوشمند</span>
+                        </a>
+
+                        <!-- بخش سبد خرید (کامنت شده) -->
+                        <!-- <div class="cart-icon">
+        <i class="fas fa-shopping-cart"></i>
+        <span class="cart-count">0</span>
+    </div>  -->
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- مودال جستجو -->
+        <div class="search-overlay-modern" id="searchOverlay">
+            <div class="search-modal">
+                <div class="search-modal-inner">
+                    <div class="search-header">
+                        <span class="search-title">جستجو در محصولات</span>
+                        <button class="close-search-modern" id="closeSearchBtn">
+                            <i class="fas fa-times"></i>
+                        </button>
+                    </div>
+                    <div class="search-field-wrapper">
+                        <i class="fas fa-search search-icon"></i>
+                        <input type="text" id="searchInput" placeholder="نام محصول، برند یا دسته‌بندی را وارد کنید...">
+                        <button class="search-submit-btn">
+                            <i class="fas fa-arrow-left"></i>
+                        </button>
+                    </div>
+                    <div class="search-suggestions">
+                        <div class="suggestions-title">پیشنهادات محبوب</div>
+                        <div class="suggestions-tags">
+                            <span>بست کمربندی</span>
+                            <span>پرس هیدرولیک</span>
+                            <span>وایر شو مسی</span>
+                            <span>نوار چسب</span>
+                        </div>
+                        <div class="suggestions-cats">
+                            <div class="suggestion-cat-item"><i class="fas fa-link"></i><span>بست کمربندی</span></div>
+                            <div class="suggestion-cat-item"><i class="fas fa-tools"></i><span>ابزار صنعتی</span></div>
+                            <div class="suggestion-cat-item"><i class="fas fa-tape"></i><span>نوار چسب</span></div>
+                            <div class="suggestion-cat-item"><i class="fas fa-plug"></i><span>وایر شو</span></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- ==================== منوی موبایل (نسخه حرفه‌ای) ==================== -->
+        <div class="mobile-menu-overlay" id="mobileMenuOverlay"></div>
+        <section class="mobile-menu-panel" id="mobileMenuPanel">
+            <div class="mobile-menu-header">
+                <div class="mobile-logo-wrapper">
+                    <span class="mobile-logo-icon"><i class="fas fa-tools"></i></span>
+                    <span class="mobile-logo">Tona<span>Tools</span></span>
+                </div>
+                <button class="close-mobile-menu" id="closeMobileMenu">
+                    <i class="fas fa-times"></i>
+                </button>
+            </div>
+
+            <div class="mobile-search">
+                <div class="mobile-search-wrapper">
+                    <i class="fas fa-search"></i>
+                    <input type="text" placeholder="جستجوی محصولات ...">
+                </div>
+            </div>
+
+            <ul class="mobile-nav-list">
+                <li>
+                    <a href="index.html" class="mobile-nav-link">
+                        <i class="fas fa-home"></i>
+                        <span>خانه</span>
+                    </a>
+                </li>
+                <li class="mobile-category-item">
+                    <div class="mobile-category-trigger">
+                        <div class="trigger-left">
+                            <i class="fas fa-th-large"></i>
+                            <span>دسته‌بندی محصولات</span>
+                        </div>
+                        <i class="fas fa-chevron-left trigger-icon"></i>
+                    </div>
+                    <ul class="mobile-submenu">
+                        <li>
+                            <a href="#">
+                                <i class="fas fa-link"></i>
+                                <span>بست کمربندی</span>
+                                <i class="fas fa-arrow-left"></i>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#">
+                                <i class="fas fa-tools"></i>
+                                <span>ابزار صنعتی</span>
+                                <i class="fas fa-arrow-left"></i>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#">
+                                <i class="fas fa-tape"></i>
+                                <span>نوار چسب</span>
+                                <i class="fas fa-arrow-left"></i>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#">
+                                <i class="fas fa-plug"></i>
+                                <span>وایر شو</span>
+                                <i class="fas fa-arrow-left"></i>
+                            </a>
+                        </li>
+                    </ul>
+                </li>
+                <li>
+                    <a href="about.html" class="mobile-nav-link">
+                        <i class="fas fa-info-circle"></i>
+                        <span>درباره ما</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="contact.html" class="mobile-nav-link">
+                        <i class="fas fa-headset"></i>
+                        <span>تماس با ما</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="blog.html" class="mobile-nav-link">
+                        <i class="fas fa-blog"></i>
+                        <span>وبلاگ</span>
+                    </a>
+                </li>
+            </ul>
+
+            <div class="mobile-footer-links">
+                <div class="mobile-user-info">
+                    <i class="fas fa-user-circle"></i>
+                    <div class="user-text">
+                        <span class="user-welcome">خوش آمدید</span>
+
+                        <!-- بخش  ورود/ثبت نام در سایدبار موبایل -->
+                        <!-- <span class="user-login">ورود / ثبت‌نام</span> -->
+                    </div>
+                </div>
+                <div class="mobile-contact-info">
+                    <div class="contact-item">
+                        <i class="fas fa-phone-alt"></i>
+                        <span>021-38024</span>
+                    </div>
+                    <div class="contact-item">
+                        <i class="fas fa-clock"></i>
+                        <span>شنبه تا چهارشنبه ۹-۱۷</span>
+                    </div>
+                </div>
+                <div class="mobile-social-icons">
+                    <a href="#"><i class="fab fa-instagram"></i></a>
+                    <a href="#"><i class="fab fa-telegram"></i></a>
+                    <a href="#"><i class="fab fa-whatsapp"></i></a>
+                    <a href="#"><i class="fab fa-linkedin-in"></i></a>
+                </div>
+            </div>
+        </section>
+    </header>
+
+    <!-- ==================== MAIN SLIDER ==================== -->
+    <section class="main-slider">
+        <div class="container-fluid">
+            <div class="slider">
+                <div class="swiper" id="homeSlider">
+                    <div class="swiper-wrapper">
+                        <div class="swiper-slide">
+                            <a href="#">
+
+                            </a>
+                        </div>
+                        <div class="swiper-slide">
+                            <a href="#">
+
+                            </a>
+                        </div>
+                        <div class="swiper-slide">
+                            <a href="#">
+
+                            </a>
+                        </div>
+                    </div>
+                    <div class="swiper-pagination"></div>
+                    <div class="swiper-button-next"></div>
+                    <div class="swiper-button-prev"></div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ==================== دسته‌بندی محصولات (نسخه اختصاصی TonaTools) ==================== -->
+    <section class="category-section">
+        <div class="container">
+            <div class="section-header">
+                <div class="section-badge">
+                    <span class="badge-line"></span>
+                    <h2 class="section-title-custom">دسته‌بندی محصولات</h2>
+                    <span class="badge-line"></span>
+                </div>
+            </div>
+
+            <div class="category-grid" id="categoryGrid">
+                <!-- دسته‌بندی‌ها توسط جاوااسکریپت از API لود می‌شوند -->
+                <div class="loading-categories" style="grid-column:1/-1; text-align:center; padding:50px;">
+                    <i class="fas fa-spinner fa-pulse" style="font-size:40px; color:#f9ae13;"></i>
+                    <p>در حال بارگذاری دسته‌بندی‌ها...</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ==================== مودال نمایش جزییات محصول ==================== -->
+    <div class="product-modal-overlay" id="productModalOverlay">
+        <div class="product-modal-container">
+            <div class="product-modal">
+                <button class="modal-close-btn" id="modalCloseBtn">
+                    <i class="fas fa-times"></i>
+                </button>
+
+                <div class="modal-content-wrapper">
+                    <!-- بخش تصویر محصول -->
+                    <div class="modal-image-section">
+                        <div class="modal-gallery">
+                            <div class="modal-main-image">
+                                <button class="gallery-nav prev" id="galleryPrev">
+                                    <i class="fas fa-chevron-right"></i>
+                                </button>
+                                <img id="modalProductImage" src="assets/image/bast-img.jpg" alt="محصول">
+                                <button class="gallery-nav next" id="galleryNext">
+                                    <i class="fas fa-chevron-left"></i>
+                                </button>
+                                <div class="modal-image-badge" id="modalProductBadge">استعلام قیمت</div>
+                            </div>
+                            <div class="modal-thumbnails" id="modalThumbnails">
+                                <!-- تصاویر کوچک به صورت داینامیک پر می‌شوند -->
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- بخش اطلاعات محصول -->
+                    <div class="modal-info-section">
+                        <div class="modal-product-badge" id="modalProductCategory">بست کمربندی</div>
+                        <h2 class="modal-product-title" id="modalProductTitle">بست کمربندی استیل 304 سایز 250*2.5</h2>
+                        <div class="modal-product-meta">
+                            <div class="meta-item">
+                                <i class="fas fa-tag"></i>
+                                <span>برند: <strong id="modalProductBrand">تونا تولز</strong></span>
+                            </div>
+                            <div class="meta-item">
+                                <i class="fas fa-barcode"></i>
+                                <span>مدل: <strong id="modalProductModel">BT-25025S</strong></span>
+                            </div>
+                            <div class="meta-item">
+                                <i class="fas fa-check-circle"></i>
+                                <span>کد کالا: <strong id="modalProductCode">TONA-BT-001</strong></span>
+                            </div>
+                        </div>
+
+                        <div class="modal-price-status" id="modalPriceStatus">
+                            <div class="price-box">
+                                <i class="fas fa-phone-alt"></i>
+                                <div class="price-text">
+                                    <span class="price-label">استعلام قیمت</span>
+                                    <span class="price-note">برای اطلاع از قیمت تماس بگیرید</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="modal-description">
+                            <h4>توضیحات محصول</h4>
+                            <p id="modalProductDescription">
+                                بست کمربندی استیل 304 با کیفیت بالا، مقاوم در برابر زنگ‌زدگی و خوردگی.
+                            </p>
+                        </div>
+
+                        <div class="modal-specs">
+                            <h4>مشخصات فنی</h4>
+                            <div class="specs-grid" id="modalSpecs">
+                                <div class="spec-item"><span class="spec-label">برند:</span><span
+                                        class="spec-value">تونا تولز</span></div>
+                                <div class="spec-item"><span class="spec-label">مدل:</span><span
+                                        class="spec-value">BT-25025S</span></div>
+                                <div class="spec-item"><span class="spec-label">گارانتی:</span><span
+                                        class="spec-value">۱۸ ماهه</span></div>
+                            </div>
+                        </div>
+
+                        <div class="modal-actions">
+                            <button class="modal-btn-primary" id="modalInquiryBtn">
+                                <i class="fas fa-phone-alt"></i>
+                                <span>استعلام قیمت</span>
+                            </button>
+                            <a href="product-detail.html" class="modal-btn-secondary" id="modalCompareBtn">
+                                <span>جزییات بیشتر</span>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- ==================== محصولات بر اساس ابزار ==================== -->
+    <!-- ==================== محصولات بر اساس ابزار ==================== -->
+    <section class="products-section">
+        <div class="container">
+            <div class="products-header">
+                <div class="section-header">
+                    <div class="section-badge">
+                        <span class="badge-line"></span>
+                        <h2 class="section-title-custom">محصولات بر اساس <span class="highlight-title">ابزار</span></h2>
+                        <span class="badge-line"></span>
+                    </div>
+                    <a href="category-detail.html?category=ابزار" class="btn-view-products">
+                        <span>مشاهده همه محصولات</span>
+                        <i class="fas fa-arrow-left"></i>
+                    </a>
+                </div>
+            </div>
+
+            <div class="products-slider-wrapper">
+                <div class="swiper products-swiper" id="toolsProductsSwiper">
+                    <div class="swiper-wrapper" id="toolsProductsWrapper">
+                        <!-- محصولات توسط جاوااسکریپت از API لود می‌شوند -->
+                    </div>
+                    <div class="swiper-button-next"></div>
+                    <div class="swiper-button-prev"></div>
+                    <div class="swiper-pagination"></div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ==================== دو بنر تبلیغاتی مینیمال ==================== -->
+    <section class="double-banner-section">
+        <div class="container">
+            <div class="double-banner-wrapper">
+                <!-- بنر راست: تخفیف ویژه -->
+                <div class="banner-card banner-right">
+                    <div class="banner-content">
+                        <div class="banner-icon">
+                            <i class="fas fa-percent"></i>
+                        </div>
+                        <div class="banner-text">
+                            <h4 class="banner-subtitle">پیشنهاد ویژه</h4>
+                            <h3 class="banner-title">تخفیف <span class="highlight">صنعتگران</span></h3>
+                            <p class="banner-desc">ارسال رایگان + هدیه ویژه برای سفارش‌های بالای ۱۰ میلیون</p>
+                        </div>
+                        <a href="#" class="banner-link">
+                            ثبت سفارش <i class="fas fa-arrow-left"></i>
+                        </a>
+                    </div>
+                </div>
+
+                <!-- بنر چپ: کاتالوگ رایگان -->
+                <div class="banner-card banner-left">
+                    <div class="banner-content">
+                        <div class="banner-icon">
+                            <i class="fas fa-file-pdf"></i>
+                        </div>
+                        <div class="banner-text">
+                            <h4 class="banner-subtitle">دانلود رایگان</h4>
+                            <h3 class="banner-title">کاتالوگ <span class="highlight">۱۴۰۴</span></h3>
+                            <p class="banner-desc">جدیدترین محصولات با مشخصات فنی و قیمت به‌روز</p>
+                        </div>
+                        <a href="#" class="banner-link">
+                            دانلود <i class="fas fa-arrow-left"></i>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ==================== محصولات بر اساس وایر شو ==================== -->
+    <section class="products-section">
+        <div class="container">
+            <div class="products-header">
+                <div class="section-header">
+                    <div class="section-badge">
+                        <span class="badge-line"></span>
+                        <h2 class="section-title-custom">محصولات بر اساس <span class="highlight-title">وایر شو</span>
+                        </h2>
+                        <span class="badge-line"></span>
+                    </div>
+                    <a href="category-detail.html?category=وایر شو" class="btn-view-products">
+                        <span>مشاهده همه محصولات</span>
+                        <i class="fas fa-arrow-left"></i>
+                    </a>
+                </div>
+            </div>
+
+            <div class="products-slider-wrapper">
+                <div class="swiper products-swiper" id="wireShaProductsSwiper">
+                    <div class="swiper-wrapper" id="wireShaProductsWrapper">
+                        <!-- محصولات توسط جاوااسکریپت از API لود می‌شوند -->
+                    </div>
+                    <div class="swiper-button-next"></div>
+                    <div class="swiper-button-prev"></div>
+                    <div class="swiper-pagination"></div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ==================== سه بنر تبلیغاتی خاص ==================== -->
+    <section class="triple-banner-section">
+        <div class="container">
+            <div class="triple-banner-wrapper">
+                <!-- بنر 1: مشاوره تخصصی -->
+                <div class="banner-card-3d">
+                    <div class="banner-glow"></div>
+                    <div class="banner-icon-wrapper">
+                        <div class="banner-icon-circle">
+                            <i class="fas fa-headset"></i>
+                        </div>
+                    </div>
+                    <div class="banner-info">
+                        <h4 class="banner-badge-title">مشاوره رایگان</h4>
+                        <h3 class="banner-main-title">مشاوره <span class="text-gradient">تخصصی</span></h3>
+                        <p class="banner-desc-small">کارشناسان ما آماده پاسخگویی به سوالات فنی شما هستند</p>
+                        <a href="#" class="banner-link-3d">
+                            <span>تماس بگیرید</span>
+                            <i class="fas fa-phone-alt"></i>
+                        </a>
+                    </div>
+                    <div class="banner-number">۰۱</div>
+                </div>
+
+                <!-- بنر 2: ضمانت اصالت -->
+                <div class="banner-card-3d banner-middle">
+                    <div class="banner-glow"></div>
+                    <div class="banner-icon-wrapper">
+                        <div class="banner-icon-circle">
+                            <i class="fas fa-shield-alt"></i>
+                        </div>
+                    </div>
+                    <div class="banner-info">
+                        <h4 class="banner-badge-title">ضمانت کیفیت</h4>
+                        <h3 class="banner-main-title">ضمانت <span class="text-gradient">اصالت</span></h3>
+                        <p class="banner-desc-small">همراه با گارانتی ۱۸ ماهه و خدمات پس از فروش</p>
+                        <a href="#" class="banner-link-3d">
+                            <span>اطلاعات بیشتر</span>
+                            <i class="fas fa-shield-alt"></i>
+                        </a>
+                    </div>
+                    <div class="banner-number">۰۲</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ==================== محصولات بر اساس بست کمربندی ==================== -->
+    <section class="products-section">
+        <div class="container">
+            <div class="products-header">
+                <div class="section-header">
+                    <div class="section-badge">
+                        <span class="badge-line"></span>
+                        <h2 class="section-title-custom">محصولات بر اساس <span class="highlight-title">بست
+                                کمربندی</span></h2>
+                        <span class="badge-line"></span>
+                    </div>
+                    <a href="category-detail.html?category=بست کمربندی" class="btn-view-products">
+                        <span>مشاهده همه محصولات</span>
+                        <i class="fas fa-arrow-left"></i>
+                    </a>
+                </div>
+            </div>
+
+            <div class="products-slider-wrapper">
+                <div class="swiper products-swiper" id="beltProductsSwiper">
+                    <div class="swiper-wrapper" id="beltProductsWrapper">
+                        <!-- محصولات توسط جاوااسکریپت از API لود می‌شوند -->
+                    </div>
+                    <div class="swiper-button-next"></div>
+                    <div class="swiper-button-prev"></div>
+                    <div class="swiper-pagination"></div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ==================== محصولات بر اساس نوار چسب ==================== -->
+    <section class="products-section">
+        <div class="container">
+            <div class="products-header">
+                <div class="section-header">
+                    <div class="section-badge">
+                        <span class="badge-line"></span>
+                        <h2 class="section-title-custom">محصولات بر اساس <span class="highlight-title">نوار چسب</span>
+                        </h2>
+                        <span class="badge-line"></span>
+                    </div>
+                    <a href="category-detail.html?category=نوار چسب" class="btn-view-products">
+                        <span>مشاهده همه محصولات</span>
+                        <i class="fas fa-arrow-left"></i>
+                    </a>
+                </div>
+            </div>
+
+            <div class="products-slider-wrapper">
+                <div class="swiper products-swiper" id="tapeProductsSwiper">
+                    <div class="swiper-wrapper" id="tapeProductsWrapper">
+                        <!-- محصولات توسط جاوااسکریپت از API لود می‌شوند -->
+                    </div>
+                    <div class="swiper-button-next"></div>
+                    <div class="swiper-button-prev"></div>
+                    <div class="swiper-pagination"></div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ==================== درباره تونا تولز ==================== -->
+    <section class="about-tonatools">
+        <div class="container">
+            <div class="about-wrapper">
+                <div class="about-image">
+                    <div class="image-frame">
+                        <div class="image-glow"></div>
+                        <video id="aboutVideo" class="about-video" poster="assets/image/001.jpg" preload="none">
+                            <source src="assets/video/about-company.mp4" type="video/mp4">
+                        </video>
+                        <div class="play-button" id="videoPlayBtn">
+                            <i class="fas fa-play"></i>
+                        </div>
+                    </div>
+                    <div class="experience-badge">
+                        <div class="exp-number">۱۴۰۲</div>
+                        <div class="exp-text">سال تاسیس</div>
+                    </div>
+                    <div class="about-buttons">
+                        <a href="#" class="btn-about-primary">
+                            <span>بیشتر بدانید</span>
+                            <i class="fas fa-arrow-left"></i>
+                        </a>
+                        <a href="#" class="btn-about-secondary">
+                            <i class="fas fa-headset"></i>
+                            <span>تماس با ما</span>
+                        </a>
+                    </div>
+                </div>
+                <div class="about-content">
+                    <div class="about-badge">
+                        <span class="badge-line"></span>
+                        <span class="badge-text">درباره ما</span>
+                        <span class="badge-line"></span>
+                    </div>
+                    <h2 class="about-title">
+                        توزیع‌کننده پیشرو <span class="title-highlight">تجهیزات صنعتی</span>
+                    </h2>
+                    <p class="about-description">
+                        شرکت تونا تولز با هدف توزیع کالاهای مرغوب و ارائه اطلاعات دقیق در زمینه تجهیزات صنعتی،
+                        ابزارآلات برقی و دستی تأسیس شده است. ما مفتخریم که با تکیه بر دانش فنی و زنجیره تأمین قوی،
+                        بهترین محصولات را با ضمانت اصالت کالا به مشتریان خود ارائه دهیم.
+                    </p>
+                    <div class="about-features">
+                        <div class="feature-item">
+                            <div class="feature-icon">
+                                <i class="fas fa-medal"></i>
+                            </div>
+                            <div class="feature-info">
+                                <h4>کیفیت تضمینی</h4>
+                                <p>محصولات با بالاترین استانداردها</p>
+                            </div>
+                        </div>
+                        <div class="feature-item">
+                            <div class="feature-icon">
+                                <i class="fas fa-headset"></i>
+                            </div>
+                            <div class="feature-info">
+                                <h4>مشاوره تخصصی</h4>
+                                <p>پشتیبانی فنی قبل و بعد از فروش</p>
+                            </div>
+                        </div>
+                        <div class="feature-item">
+                            <div class="feature-icon">
+                                <i class="fas fa-shield-alt"></i>
+                            </div>
+                            <div class="feature-info">
+                                <h4>ضمانت اصالت</h4>
+                                <p>همراه با گارانتی معتبر</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="about-stats">
+                        <div class="stat">
+                            <span class="stat-number">۵۰۰+</span>
+                            <span class="stat-label">محصول ویژه</span>
+                        </div>
+                        <div class="stat-divider"></div>
+                        <div class="stat">
+                            <span class="stat-number">۴+</span>
+                            <span class="stat-label">دسته محصول</span>
+                        </div>
+                        <div class="stat-divider"></div>
+                        <div class="stat">
+                            <span class="stat-number">۱۰۰%</span>
+                            <span class="stat-label">رضایت مشتری</span>
+                        </div>
+                        <div class="stat-divider"></div>
+                        <div class="stat">
+                            <span class="stat-number">۲۴/۷</span>
+                            <span class="stat-label">پشتیبانی</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ==================== FOOTER ==================== -->
+    <footer class="footer-custom">
+        <div class="container">
+            <div class="footer-grid">
+                <div>
+                    <div class="footer-logo">Tona<span style="color: var(--main-color-one);">Tools</span></div>
+                    <p>توزیع‌کننده پیشرو تجهیزات صنعتی، ابزارآلات حرفه‌ای و ملزومات کابل‌کشی</p>
+                    <div class="social-icons">
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                        <a href="#"><i class="fab fa-telegram"></i></a>
+                        <a href="#"><i class="fab fa-whatsapp"></i></a>
+                        <a href="#"><i class="fab fa-linkedin-in"></i></a>
+                    </div>
+                </div>
+                <div class="footer-links">
+                    <h5 style="color:white; margin-bottom:20px;">دسترسی سریع</h5>
+                    <a href="#">صفحه اصلی</a>
+                    <a href="#">درباره ما</a>
+                    <a href="#">تماس با ما</a>
+                </div>
+                <div class="footer-links">
+                    <h5 style="color:white; margin-bottom:20px;">دسته‌بندی</h5>
+                    <a href="#">بست کمربندی</a>
+                    <a href="#">ابزار صنعتی و برقی</a>
+                    <a href="#">نوار چسب صنعتی</a>
+                    <a href="#">وایر شو و کابلشو</a>
+                </div>
+                <div>
+                    <h5 style="color:white; margin-bottom:20px;">تماس با ما</h5>
+                    <p><i class="fas fa-phone-alt" style="color: var(--main-color-one);"></i> 021-38024</p>
+                    <p><i class="fas fa-envelope" style="color: var(--main-color-one);"></i> info@tonatools.com</p>
+                    <p><i class="fas fa-map-marker-alt" style="color: var(--main-color-one);"></i> تهران، خیابان آزادی،
+                        پلاک ۱۲۴</p>
+                </div>
+            </div>
+            <hr>
+            <div class="copyright">© ۱۴۰۴ تمامی حقوق برای تونا تولز محفوظ است.</div>
+        </div>
+    </footer>
+
+
+    <script src="assets/js/swiper-bundle.min.js"></script>
+    <script src="assets/js/click-animation.js"></script>
+    <script src="assets/js/script.js"></script>
+</body>
+
+</html>
